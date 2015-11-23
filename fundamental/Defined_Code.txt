@@ -3,9 +3,32 @@
 	@Date: 2015-11-23
 	@Content: It is about defining_code
 */
+简体中文:
 标题: 揭开标题神秘面纱.
 什么事编程?
 	1.Windows系统自带的计算器软件实现基本运算;
 	2.编程就是让计算机为解决某个问题而使用某种程序设计语言编写程序设计代码,并最终得到结果的过程.
 	3.为了使计算机能够理解人的意图,我们就必须要将需解决的问题的思路、方法、和手段通过计算机能够理解的形式告诉计算机,
 	使得计算机能够根据我们的指令一步一步去工作,完成某种特定的任务。这种人与计算机之间的交流就叫做编程.
+English:
+	Title: uncover the mystery of the title.
+	What is the programming?
+	1.Windows system comes with calculator software to achieve basic computing;
+	2 The programming is aimed to make the computer solve a problem and use a programming language to write program design code, 
+		and get the results of the process finally.
+	3 In order to make the computer understand the intent of the people, 
+		we must have to solve the problem of ideas, methods, 
+			and means through the computer to understand the form of telling the computer,
+				So that the computer can work according to our instructions step by step to accomplish a particular task. 
+					This is communication between people and computer is called programming.
+日本語:					
+	標題：オープン標題ベール。
+		何のプログラミング？
+		1.Windowsシステム持参の電卓ソフト実現基本演算、
+		2 .プログラミングはコンピュータを使用して解決はある問題にあるプログラミング言語プログラミングコードを設計し、
+			最終結果の過程。
+		3 .コンピュータ理解させるために人の意図は、
+			私たちを解決しなければならない必要の問題の構想は、方法、手段とコンピューターによって理解できる形でコンピュータ、
+				コンピュータが私たちの指令によってで一歩一歩仕事に行って、ある特定の任務を完成する。
+					このような人とコンピュータの間の交流はプログラミングという。
+					
