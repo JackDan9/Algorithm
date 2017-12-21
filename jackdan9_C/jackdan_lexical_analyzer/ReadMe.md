@@ -4,4 +4,5 @@ tags:  compilation_principle, lexical_analyzer, jackdan
 author: jackdan9
 ---
 # A lexical analyzer on lexical analysis.
-## Compilation principle
+## Foreword:
+- Lexical analysis is the first phase of **compilation**.
