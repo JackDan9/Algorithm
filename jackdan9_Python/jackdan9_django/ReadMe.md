@@ -132,6 +132,27 @@ $ Python -c "import django; print(django.__path__)"
 
 ------
 
+## Verify
+- To verify that Django can be seen by Python, type **Python** from your shell. Then at the Python prompt, try to import Django:
+```
+>>> import django
+>>> print(django.get_version())
+1.10.6
+```
+- Of course! You may have anther version of Django installed.
+
+------
+
+## Create a project
+- If this is your first time using Django, you'll have to take care of some initial setup.
+- Namely, you'll need to auto-generate some code that establishes a Django **project** - a collection of settings for an instance of Django, including database configuration, Django-specific options and application-specific settings.
+- **project**:
+    - A Python package - i.e. a directory of code - that contains all the settings for an instance of Django. This would include database configuration, Django - specific options and application-specific settings.
+- From the command line, **cd** into a directory where you'd like to store your code, then run the following command.
+```
+> django-admin startproject mysite
+```
+- This will create a **mysite** directory in your current directory. If it didn't work, see [Problems running django-admin][27].
 
 
   [1]: https://www.python.org/downloads/
@@ -160,3 +181,5 @@ $ Python -c "import django; print(django.__path__)"
   [24]: https://docs.djangoproject.com/en/2.0/intro/contributing/
   [25]: https://docs.djangoproject.com/en/2.0/misc/distributions/
   [26]: https://docs.djangoproject.com/en/2.0/topics/install/#installing-development-version/
+  [27]: https://docs.djangoproject.com/en/2.0/faq/troubleshooting/#troubleshooting-django-admin
+
