@@ -336,6 +336,7 @@ $ python manage.py runserver
 
 ## Database setup
 - Now, open up **jackdan9_django/settings.py**. It's a normal Python module-level variables representing Django settings.
+- By default, the
 
   [1]: https://www.python.org/downloads/
   [2]: https://www.postgresql.org/
