@@ -332,6 +332,11 @@ $ python manage.py runserver
 - Naming your URL lets you refer to it unamebiguously from elewhere in Django, especially from within templates. This powerful feature allows you to make global changes to the URL patterns of your project while only touching a single file.
 - When you're comfortable with the basic request and response flow. read part 2 of this tutorial to start working with the database.
 
+------
+
+## Database setup
+- Now, open up **jackdan9_django/settings.py**. It's a normal Python module-level variables representing Django settings.
+
   [1]: https://www.python.org/downloads/
   [2]: https://www.postgresql.org/
   [3]: https://www.mysql.com/
