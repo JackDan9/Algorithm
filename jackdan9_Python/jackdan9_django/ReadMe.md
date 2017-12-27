@@ -336,7 +336,15 @@ $ python manage.py runserver
 
 ## Database setup
 - Now, open up **jackdan9_django/settings.py**. It's a normal Python module-level variables representing Django settings.
-- By default, the
+- By default, the configuration uses SQLite. If you're new to databases, or you're just interest in trying Django, this is the easiest choice. SQLite is included in Python, so you won't need to install anything else to support your database. When starting your first real project, however, you may want to use a more scalable database like PostgreSQL, to avoid database-switching headaches down to road.
+- If you wish to use another database, install the appropriate `database bindings` and change the following keys in the **DATABASES 'default'** item to match your database connection settings:
+- **DATABASES**:
+    - Default: `{}` (Empty dictionary)
+    - A dictionary containing the settings for all databases to be used with Django. It is a nested dictionary whose contents map a database alias to a dictionary containing the options for an individual database.
+    - The **DATABASES** setting must configure a **default** database; any number of additional database may also be specified.
+    - The simple possible settings file is for a single-database setup using SQLite. This can be configured using the following:
+    - `DATABASES = { 'default' : { 'ENGINE': 'django.db.backends.sqlite3', 'NAME': 'mydatabase' } }`
+    - When connecting to other database backends, such as MySQL, Oracle, or PostgreSQL, additional connection parameters will be required. See the
 
   [1]: https://www.python.org/downloads/
   [2]: https://www.postgresql.org/
