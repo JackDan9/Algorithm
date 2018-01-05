@@ -102,6 +102,27 @@ hello jackdan
 >>>
 ```
 - 语句和表达式之间的区别在赋值时会表现得更加明显一些. 
+
+------
+
+### 获取用户输入:
+- `input`函数:
+```
+>>> input("The meaning of life: ")
+The meaning of life: 42
+42
+```
+- `input`语句的结果值就是jackdan输入的数字, 它自动在最后一行被打印出来.
+``` python
+>>> x = input("x: ")
+x: 34
+>>> y = input("y: ")
+y: 42
+>>> print(x * y)
+1428
+```
+
+
 ------
 
 ## `hello.py`:
