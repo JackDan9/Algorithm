@@ -507,7 +507,263 @@ u'Hello, JackDan!'
 	- `Unicode`编码;
 	- `buffer`对象;
 	- `xrange`对象.
-- 列表和元组的主要区别在于, 列表可以修改, 元组则不能.
+- 列表和元组的主要区别在于, **列表**可以**修改**, **元组**则**不能**.
 - Python之中还有一种名为容器(`container`)的数据结构. 容器基本上是包含其他对象的任意对象.
 - 序列(例如列表和元组)和映射(例如字典)是两类主要的容器.
-- 序列中的每个元素都有自己的编号, 而映射中的每个元素则有一个名字(也称为键).
+- 序列中的**每个元素**都有**自己的编号**, 而映射中的**每个元素**则有**一个名字**(也称为**键**).
+- **集合(`Set`)**既不是**容器**也不是**映射的容器类型**.
+
+### 通用序列操作:
+- 所有序列类型都可以进行类型某些特定的操作.包括:
+  - **索引**(indexing);
+  - **分片**(sliceing);
+  - **加**(adding);
+  - **乘**(multiplying);
+  - **成员资格**(判断某个元素是否属于序列的成员);
+  - 计算序列长度以及找出最大元素和最小元素的内建函数;
+  - 迭代(iteration){对序列进行迭代的意思是: 依次对序列中的每个元素重复执行某些操作.};
+
+#### 索引(indexing):
+- 序列中的所有元素都是有编号的——从0开始递增.
+```python
+>>> greeting = 'Hello, JackDan'
+>>> greeting[0]
+'H'
+```
+- 字符串就是一个由字符组成的序列. 索引0指向第一个元素. 所以`greeting[0]`打印出`H`.
+- 可以通过索引获取元素. 所有序列都可以通过这种方式进行索引. 使用负数索引时, Python会从右边, 也就是从最后一个1个元素开始计数. 最后1个元素的位置编号是-1(不是-0, 因为-0就是0那样就会和第一个元素重合).
+```python
+>>> greeting[-1]
+'n'
+```
+- 字符串字面值能够直接使用索引, 而不需要一个变量引用它们. 两种做法的效果是一样的.
+```python
+>>> 'Hello, JackDan[1]'
+'e'
+```
+- 如果一个函数调用返回一个序列, 那么可以直接对返回结果进行**索引操作**.
+```python
+>>> fourth = input('Year: ')[3]
+Year: 2018
+>>> fourth
+'8'
+```
+- 索引示例:
+```python
+# -*- coding: utf-8 -*-
+# 根据给定的年月日以数字形式打印出日期
+months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+]
+
+endings = ['st', 'nd', 'rd'] + 17 * ['th'] + ['st', 'nd', 'rd'] + 7 * ['th'] + ['st']
+
+year = raw_input('Year: ')
+month = raw_input('Month(1-12): ')
+day = raw_input('Day(1-31): ')
+
+month_number = int(month)
+day_number = int(day)
+
+month_name = months[month_number-1]
+ordinal = day + endings[day_number-1]
+
+print(month_name + ' ' + ordinal + '. ' + year)
+```
+- 运行结果:
+```python
+Year: 2018
+Month(1-12): 1
+Day(1-31): 9
+January 9th. 2018
+
+```
+- 最后一行是程序的输出.
+
+#### 分片:
+- 与使用索引来访问单个元素类似, 可以使用**分片**操作来访问一定范围内的元素. 分片通过冒号`:`相隔的**两个索引**来实现.
+```python
+>>> tag = '<a href="http://www.python.org">Python web site</a>'
+>>> tag[9:30]
+'http://www.python.org'
+>>> tag[32:-4]
+'Python web site'
+```
+- 分片操作对于提取序列的一部分是很有用的. 而编号在这里显得尤为重要.
+- 第一个索引需要提取的是第1个元素的编号, 而最后的索引则是分片之后剩下部分的第1个元素的编号.
+```python
+>>> numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> numbers[3:6]
+[4, 5, 6]
+>>> numbers[0:1]
+[1]
+```
+- 分片操作的实现需要提供两个索引作为边界, 第1个索引的元素是包含在分片内的, 而第2个则不包含在分片内.
+- **优雅的捷径**：
+- 假设需要访问最后3个元素, 那么当然可以进行显式的操作:
+```python
+>>> numbers[7:10]
+[0, 9, 10]
+```
+- 现在, 索引10指向的是第11个元素——这个元素并不存在, 却是在最后一个元素之后.
+- 所以,这样的做法是可行的.
+```python
+>>> numbers[-3:-1]
+[8, 9]
+```
+- 由此可见, 并不能以这种方式访问最后一个元素. 那么使用索引0作为最后一步的下一步操作所使用的元素, 结果又是什么？
+```python
+>>> numbers[-3, 0]
+[]
+```
+- 很明显, 以上打印的结果不是我们心中想要的. 实际上, 只要分片中**最左边的索引**比它**最右边的** **晚出现**在序列中, 结果就是一个空的序列.
+- 如果分片所得部分包括序列结尾元素, 那么, 只需置空最后一个索引即可:
+```python
+>>> numbers[-3:]
+[8, 9, 10]
+``` 
+- 当然, 此类方法也适合序列的开始的元素.
+```python
+>>> numbers[:3]
+[1, 2, 3]
+```
+- 实际上, 如果需要复制整个序列, 可以将两个索引都置空.
+```python
+>>> numbers[:]
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+```
+- 分片代码:
+```python
+# -*- coding:utf-8 -*-
+
+url = raw_input('Please enter the URL:')
+domain = url[11:-4]
+
+print("Domain name: " + domain)
+```
+- 运行结果:
+```python
+gmentation.py
+Please enter the URL:http://www.something.com
+Domain name: something
+
+```
+- **更大的步长**:
+- 进行分片的时候, 分片的开始和结束点需要进行指定(不需要直接还是间接).
+- 在Python中还有另外一个参数——**步长**(step length)——通常都是隐式设置的.
+- 在普通的分片中, 步长是`1`——分片操作就是按照这个步长**逐个遍历序列的元素,** 然后返回开始和结束点之间的所有元素.
+```python
+>>> numbers[0:10:1]
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+```
+- 分片中包含一个数字. 没错, 这就是**步长**的显式设置. 如果步长被设置为比`1`大的数, 那么就会跳过某些元素.
+```python
+>>> numbers[0:10:2]
+[1, 3, 5, 7, 9]
+>>> numbers[3:6:3]
+[4]
+
+```
+- 如果需要将每4个元素中的第1个提取出来, 那么只要将步长设置为4即可:
+```python
+>>> numbers[::4]
+[1, 5, 9]
+
+```
+- 步长不能为`0`——那不会向下执行——但步长可以是**负数**, 即从右到左提取元素:
+```python
+>>> numbers[8:3:-1]
+[9, 8, 7, 6, 5]
+>>> numbers[10:0:-2]
+[10, 8, 6, 4, 2]
+>>> numbers[0:10:-2]
+[]
+>>> numbers[::-2]
+[10, 8, 6, 4, 2]
+>>> numbers[5::-2]
+[6, 4, 2]
+>>> numbers[:5:-2]
+[10, 8]
+```
+- 开始点的元素(最左边元素)包括在结果之中, 而结束点的元素(最右边的元素)则不在分片之内. 
+- 当使用一个负数作为步长时, 必须让开始点(开始索引)**大于**结束点.
+- 对于一个**正数步长**, Python会从序列的**头部开始向右提取元素,** 直到最后一个元素; 而对于**负数步长**, 则是从**序列的尾部开始向左提取元素,**  直到第一个元素.
+
+#### 序列相加:
+- 通过使用加号可以进行序列的连接操作:
+```python
+>>> [1, 2, 3] + [4, 5, 6]
+[1, 2, 3, 4, 5, 6]
+>>> 'Hello. ' + 'world!'
+'Hello. world!'
+>>> [1, 2, 3] + 'world!'
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: can only concatenate list (not "str") to list
+>>>
+```
+- 正如错误信息所提示的, **列表**和**字符串**是无法连接在一起的, 尽管它们都是序列.
+- 两个相同类型的序列才能进行操作.
+
+#### 乘法:
+- 用数字`x`乘以一个序列会生成的序列, 而在新的序列中, 原来的序列将被重复`x`次.
+```python
+>>> 'python' * 5
+'pythonpythonpythonpythonpython'
+>>> [42] * 10
+[42, 42, 42, 42, 42, 42, 42, 42, 42, 42]
+>>>
+```
+- **None, 空列表和初始化**.
+- 空列表可以简单地通过两个中括号进行表示`([])`——里面什么东西都没有.
+- `None`是一个Python的内建值, 它的确切含意是"这里什么也没有".
+```python
+>>> sequence = [None] * 10
+>>> sequence
+[None, None, None, None, None, None, None, None, None, None]
+>>>
+```
+- 代码可能看起来很复杂, 但只使用基本的算法——计算出有多少空格、破折号等字符, 然后将它们放置到合适的位置即可.
+```python
+# -*-coding: utf-8 -*-
+
+sentence = raw_input("Sentence: ")
+
+screen_width = 80
+text_width = len(sentence)
+box_width = text_width + 6
+left_margin = (screen_width - box_width) // 2
+
+print()
+print(' ' * left_margin + '+' + '-' * (box_width-2) + '+')
+print(' ' * left_margin + '|' + ' ' * text_width + '|')
+print(' ' * left_margin + '|' +        sentence + '|')
+print(' ' * left_margin + '|' + ' ' * text_width + '|')
+print(' ' * left_margin + '+' + '-' * (box_width-2) + '+')
+print()
+```
+- 运行结果:
+```python
+Sentence: He's a very naughty boy!
+()
+                         +----------------------------+
+                         |                        |
+                         |He's a very naughty boy!|
+                         |                        |
+                         +----------------------------+
+()
+
+```
