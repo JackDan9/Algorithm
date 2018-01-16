@@ -767,3 +767,111 @@ Sentence: He's a very naughty boy!
 ()
 
 ```
+
+#### 成员资格：
+- 为了检查一个值是否在序列中, 可以使用`in`运算符。
+- `in`运算符和之前讨论过的(例如`+`, `*`运算符)有一点不同。
+- `in`运算符检查某个条件是否为真, 然后返回相应的值:
+  - 条件为真返回`True`;
+  - 条件为假返回`False`;
+- (条件为真返回`True`, 条件为假返回`False`)这样的运算符叫做**布尔运算符(`boolean`)**。
+- **布尔运算符(boolean)**的真值叫做**布尔值**。
+```python
+>>> permissions = 'rw'
+>>> 'w' in permissions
+True
+>>> 'x' in permissions
+False
+>>> users = ['mlh', 'foo', 'bar']
+>>> raw_input('Enter your user name: ') in users
+Enter your user name: mlh
+True
+>>> subject = '$$$ Get rich now!!!! $$$'
+>>> '$$$' in subject
+True
+>>>
+```
+- 在UNIX系统中:
+```python
+>>> permissions = 'rw'
+>>> 'w' in permissions
+```
+- 这两行代码可以作为查看文件可写和可执行权限的脚本。
+```python
+# -*- coding:utf-8 -*-
+# Check username and PIN code.
+
+database = [
+    ['jackdan', '1234'],
+    ['jackdan9', '4242'],
+    ['jack', '7524'],
+    ['dan', '9843']
+]
+username = raw_input('User name: ')
+pin = raw_input('PIN code: ')
+
+if [username, pin] in database:
+    print('Access granted')
+```
+- 运行结果:
+```python
+>Python isIn.py
+User name: jackdan
+PIN code: 1234
+Access granted
+
+```
+```python
+>Python isIn.py
+User name: jackdan
+PIN code: 12345
+```
+- 以上判断用户输入的用户名和PIN码是否存在于数据库中(实际上是一个列表)中的程序。
+- 如果用户名/PIN码这一数值对存在于数据库中, 那么就在控制台上打印`'Access granted'`, 反之则打印空。
+
+#### **长度、最小值和最大值**:
+- 内建函数`len`, `min`和`max`非常有用。
+-2- `len`函数返回序列中所包含元素的数量; 
+-2- `min`函数返回序列中的最小的元素;
+  - `max`函数则分别返回序列中的最大的元素.
+```python
+>>> numbers = [205, 250, 520]
+>>> len(numbers)
+3
+>>> min(numbers)
+205
+>>> max(numbers)
+520
+>>> max(2, 3)
+3
+>>> min(9, 3, 2, 5)
+2
+>>>
+```
+- 最后两行代码中的表达式:
+```python
+>>> max(2, 3)
+3
+>>> min(9, 3, 2, 5)
+2
+>>>
+```
+- `max`函数和`min`函数的参数并不是一个序列, 而是以多个数字直接作为参数。
+
+------
+
+### 列表: Python的**"苦力"**
+- 列表不同于元组和字符串的地方:
+  - 列表是可变的(mutable) —— 可以改变列表的内容, 并且列表有很多有用的、专门的方法.
+
+#### `list`函数:
+- 因为字符串不能像列表一样被修改, 所以有时候需要根据字符串创建列表。
+- `list`函数可以实现上面的这个操作:
+```python
+>>> list('Hello, JackDan')
+['H', 'e', 'l', 'l', 'o', ',', ' ', 'J', 'a', 'c', 'k', 'D', 'a', 'n']
+```
+> 注意, `list`函数适用于所有类型的序列, 而不只是字符串。
+
+#### 基本的列表操作：
+- 
