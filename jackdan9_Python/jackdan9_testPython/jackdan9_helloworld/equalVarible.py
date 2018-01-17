@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 def aVar():
     a = 2
     del a

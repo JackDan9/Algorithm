@@ -1,4 +1,5 @@
 # _*_ coding: UTF-8 _*_
+
 word = "jackdan9_python"
 print(word[0:2])
 print(word[1:])
@@ -7,7 +8,6 @@ print(word[4:5])
 print('J' + word[1:])
 print('D' + word[4:])
 print(len(word))
-
 print(4 ** 3)
 
 cubes = [1, 8, 27, 65, 125]  # something's wrong here
@@ -16,6 +16,7 @@ print(cubes)
 
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
 print(letters)
+
 # replace some values
 letters[2:5] = ['C', 'D', 'E']
 print(letters)
