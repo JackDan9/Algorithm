@@ -1,60 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta chartset="utf-8" />
+        <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="referrer" content="origin" />
-        <meta property="og:description" content="实现二叉树排序" />
-        <meta http-equiv="Cache-Control" content="no-transform" />
-        <meta http-equiv="Cache-Control" content="no-siteapp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>实现二叉树排序</title>
+        <title>深度优化之后的冒泡排序----冒泡排序</title>
         <script type="text/javascript">
-            function BinaryTree() {
-
-                var Node = function(key) { // 节点定义
-                    this.key = key; // 节点值
-                    this.left = null; // 左孩子
-                    this.right = null; // 右孩子
-                }
-
-                var root = null; // 二叉树的根节点初始化为空
-
-                // 插入规则insertNode()
-                var insertNode = function(node, newNode) {
-                    if(node.key > newNode.key) { // 如果新节点值小于根节点就插到左边
-                        if(node.left === null) {
-                            node.left = newNode; // 根节点没有左孩子, 新节点就直接做它的左孩子
-                        } else {
-                            insertNode(node.left, newNode); // 根节点有左孩子, 就按照插入规则插到左孩子的下边(再来一次)
-                        }
-                    } else {
-                        if(node.right === null) {
-                            node.right = newNode;
-                        } else {
-                            insertNode(node.right, newNode);
+            function BubbleSort(arr) {
+                let i, j, temp;
+                let flag = true
+                for(i=0; i < arr.length - 1 && flag; i++) {
+                    flag = false;
+                    for(j=arr.length - 1; j > i; j--) {
+                        if(arr[j] < arr[j - 1]) {
+                            temp = arr[j];
+                            arr[j] = arr[j - 1];
+                            arr[j - 1] = temp;
+                            flag = true
                         }
                     }
                 }
-
-                this.insert = function(key) { // 二叉树的插入方法
-                    var newNode = new Node(key); // 新建出对应的节点
-                    if(root === null) { // 如果根节点为null, 就把该节点作为根节点
-                        root = newNode;
-                    } else {
-                        insertNode(root, newNode); // 根节点不是空的, 就按照排序二叉树规则插入新节点
-                    }
-                };
+                return arr;
             }
-
-            var arr = [8, 3, 10, 1, 7, 6, 13, 4, 14];
-            var binaryTree = new BinaryTree();
-            arr.forEach(function(key) {
-                debugger;
-                binaryTree.insert(key);
-            });
+            var arr=[10, 7, 9, 11, 22, 33, 4, 2, 0, 1000];
+            BubbleSort(arr);
+            console.log(arr);
         </script>
     </head>
     <body>
+
     </body>
 </html>
