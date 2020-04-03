@@ -135,3 +135,20 @@ let QuickSort = (array) => {
 var arr=[10, 7, 9, 4, 11, 22, 33, 4, 2, 0, 1000];
 console.log(QuickSort(arr));
 ```
+
+------
+
+
+``` javascript
+let betterQuickSort = (arr, begin, end) => {
+    // 递归出口
+    if(beigin >= end) {
+        return;
+    }
+    let left = begin; // 左指针
+    let right = end; // 右指针
+    let temp = arr[begin]; // 基准数, 这里去数组第一个数
+    
+
+}
+```
