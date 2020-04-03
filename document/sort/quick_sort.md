@@ -114,6 +114,24 @@ console.log(QuickSort(arr));
 
 ``` javascript
 let QuickSort = (array) => {
-     
+    if (array.length  < 2) {
+        return array;
+    }
+
+    let leftArray = [];
+    let rightArray = [];
+    let baseDigit = array[0];
+    array.forEach(element => {
+        if (element < baseDigit) {
+            leftArray.push(element);
+        } else if (element > baseDigit) {
+            rightArray.push(element);
+        }
+    });
+
+    return QuickSort(leftArray).concat(baseDigit, QuickSort(rightArray));
 }
+
+var arr=[10, 7, 9, 4, 11, 22, 33, 4, 2, 0, 1000];
+console.log(QuickSort(arr));
 ```
