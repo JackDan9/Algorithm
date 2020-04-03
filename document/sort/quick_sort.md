@@ -43,12 +43,69 @@ function QuickSort(arr) {
         arr[left] = temp;
     }
     // 递归实现
-    return QuickSort(arr.slice(0, left)).concat(arr.slice(left, right+1)).concat(QuickSort(arr.slice(right+1)));
+    return QuickSort(arr.slice(0,left)).concat(arr.slice(left,right+1)).concat(QuickSort(arr.slice(right+1)));
 }
 
 var arr=[10, 7, 9, 11, 22, 33, 4, 2, 0, 1000];
-QuickSort(arr);
-console.log(arr);
+console.log(QuickSort(arr));
+```
+
+------
+
+## Example(QuickSort)
+
+``` html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta chartset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="referrer" content="origin" />
+        <meta property="og:description" content="JS排序算法之快速排序" />
+        <meta http-equiv="Cache-Control" content="no-transform" />
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>JS排序算法之快速排序</title>
+        <script type="text/javascript">
+            function QuickSort(arr) {
+                if(arr.length < 2) {
+                    return arr;
+                }
+
+                let left = 0;
+                let right = arr.length - 1;
+
+                while(left < right) {
+                    if(arr[right] >= arr[0] && left < right) {
+                        right--;
+                    }
+
+                    if(arr[left] <= arr[0]  && left < right) {
+                        left++;
+                    }
+
+                    if (right == left) {
+                        let middle = arr[right];
+                        arr[right] = arr[0];
+                        arr[0] = middle;
+                        break;
+                    }
+
+                    let temp = arr[right];
+                    arr[right] = arr[left];
+                    arr[left] = temp;
+                }
+                return QuickSort(arr.slice(0, left)).concat(arr.slice(left,right+1)).concat(QuickSort(arr.slice(right+1)));
+            }
+
+            var arr=[10, 7, 9, 11, 22, 33, 4, 2, 0, 1000];
+            console.log(QuickSort(arr));
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
 ```
 
 ------
@@ -57,6 +114,6 @@ console.log(arr);
 
 ``` javascript
 let QuickSort = (array) => {
-    
+     
 }
 ```
