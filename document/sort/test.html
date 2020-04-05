@@ -1,39 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta chartset="utf-8" />
+        <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="referrer" content="origin" />
-        <meta property="og:description" content="JS排序算法之快速排序" />
-        <meta http-equiv="Cache-Control" content="no-transform" />
-        <meta http-equiv="Cache-Control" content="no-siteapp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>JS排序算法之快速排序</title>
+        <title>排序之直接选择排序</title>
         <script type="text/javascript">
-            let BetterQuickSort = (array, begin, end) => {
-                if(array.length < 2) {
-                    return array;
-                }
-                
-                let left = begin;
-                let right = end;
-                let temp = arr[begin];
-                while(left < right) {
-                    while(left < right && arr[right] >= temp) {
-                        right--;
+            let StraightSelectSort = (arr, begin, end) => {
+                let index;
+                for(let i = begin; i < end; i++) {
+                    index = i;
+                    for (let j = i + 1; j < end + 1; j++) {
+                        if(arr[index] > arr[j]) {
+                            index = j;
+                        }
                     }
-                    while(left < right && arr[left] <= temp) {
-                        left++;
+                    if(index != i) {
+                        let temp = arr[i];
+                        arr[i] = arr[index];
+                        arr[index] = temp;
                     }
-                    [arr[left], arr[right]] = [arr[right], arr[left]];
                 }
-                [arr[begin], arr[left]] = [arr[left], arr[begin]];
-                BetterQuickSort(arr, begin, left - 1);
-                BetterQuickSort(arr, left + 1, end);
+                return arr;
             }
             var arr=[10, 7, 9, 4, 11, 22, 33, 4, 2, 0, 1000];
-            debugger;
-            BetterQuickSort(arr, 0, 9);
+            StraightSelectSort(arr, 0, 9);
             console.log(arr);
         </script>
     </head>
