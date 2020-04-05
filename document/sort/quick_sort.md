@@ -136,19 +136,175 @@ var arr=[10, 7, 9, 4, 11, 22, 33, 4, 2, 0, 1000];
 console.log(QuickSort(arr));
 ```
 
+- 以上的代码存在一个情况，就是提供数组里面的元素中有两个元素相等的这种情况，输出是一个元素。所以也就是说，上面的简化优化的function是无法对数组元素存在相同的情况进行处理。
+
+
+## Example(QuickSort(简单优化))
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta chartset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="referrer" content="origin" />
+        <meta property="og:description" content="JS排序算法之快速排序" />
+        <meta http-equiv="Cache-Control" content="no-transform" />
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>JS排序算法之快速排序</title>
+        <script type="text/javascript">
+            let QuickSort = (array) => {
+                if (array.length  < 2) {
+                    return array;
+                }
+
+                let leftArray = [];
+                let rightArray = [];
+                let baseDigit = array[0];
+                array.forEach(element => {
+                    if (element < baseDigit) {
+                        leftArray.push(element);
+                    } else if (element > baseDigit) {
+                        rightArray.push(element);
+                    }
+                });
+
+                return QuickSort(leftArray).concat(baseDigit, QuickSort(rightArray));
+            }
+
+            var arr=[10, 7, 9, 4, 11, 22, 33, 4, 2, 0, 1000];
+            console.log(QuickSort(arr));
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
+```
+
 ------
 
 
+## 优化改造针对于数组存在相同元素
+
 ``` javascript
-let betterQuickSort = (arr, begin, end) => {
+let BetterQuickSort = (arr, begin, end) => {
     // 递归出口
-    if(beigin >= end) {
+    if(begin >= end) {
         return;
     }
     let left = begin; // 左指针
     let right = end; // 右指针
-    let temp = arr[begin]; // 基准数, 这里去数组第一个数
-    
-
+    let temp = arr[begin]; // 基准数, 这里取数组第一个数
+    while(left < right) {
+        // 右指针从右向左扫描，碰到第一个小于基准数的时候停住
+        while(left < right && arr[right] >= temp) {
+            right--;
+        }
+        // 左指针从左向右扫描, 碰到第一个大于基准数的时候停住
+        while(left < right && arr[left] <= temp) {
+            left++;
+        }
+        // 交换左右指针所停位置的数
+        [arr[left], arr[right]] = [arr[right], arr[left]];
+    }
+    // 最后交换基准数与指针相遇位置的数
+    [arr[begin], arr[left]] = [arr[left], arr[begin]];
+    // 递归处理左右数组
+    BetterQuickSort(arr, begin, left - 1);
+    BetterQuickSort(arr, left + 1, end);
 }
+
+var arr=[10, 7, 9, 4, 11, 22, 33, 4, 2, 0, 1000];
+BetterQuickSort(arr, 0, 9);
+console.log(arr);
 ```
+
+- 这个解决了数组当中存在两个元素相等的情况，也就是`arr[right] >= temp`以及`arr[left] <= temp`当中的等于情况.
+
+## Example(BetterQuickSort)
+
+``` html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta chartset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="referrer" content="origin" />
+        <meta property="og:description" content="JS排序算法之快速排序" />
+        <meta http-equiv="Cache-Control" content="no-transform" />
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>JS排序算法之快速排序</title>
+        <script type="text/javascript">
+            let BetterQuickSort = (array, begin, end) => {
+                if(array.length < 2) {
+                    return array;
+                }
+                
+                let left = begin;
+                let right = end;
+                let temp = arr[begin];
+                while(left < right) {
+                    while(left < right && arr[right] >= temp) {
+                        right--;
+                    }
+                    while(left < right && arr[left] <= temp) {
+                        left++;
+                    }
+                    [arr[left], arr[right]] = [arr[right], arr[left]];
+                }
+                [arr[begin], arr[left]] = [arr[left], arr[begin]];
+                BetterQuickSort(arr, begin, left - 1);
+                BetterQuickSort(arr, left + 1, end);
+            }
+            var arr=[10, 7, 9, 4, 11, 22, 33, 4, 2, 0, 1000];
+            debugger;
+            BetterQuickSort(arr, 0, 9);
+            console.log(arr);
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
+```
+
+------
+
+## 还有一种解法
+
+```javascript
+const QuickSort = (array) => {
+    const sort = (array, left = 0, right = array.length - 1) => {
+        if (left >= right) {
+            return;
+        }
+        let i = left;
+        let j = right;
+        const baseVal = array[j]; // 取无序数组最后一个数为基准值
+        while(i < j) {
+            while(i < j && array[i] <= baseVal) {
+                i++;
+            }
+            array[j] = array[i];
+            while(j > i && array[j] >= baseVal) {
+                j--;
+            }
+            array[i] = array[j];
+        }
+        
+        array[j] = baseVal;
+        sort(array, left, j-1);
+        sort(array, j+1, right);
+    }
+    const newArr = array.concat();
+    sort(newArr);
+    return newArr;
+}
+
+var arr=[10, 7, 9, 4, 11, 22, 33, 4, 2, 0, 1000];
+console.log(QuickSort(arr));
+```
+
