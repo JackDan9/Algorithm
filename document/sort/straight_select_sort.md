@@ -6,6 +6,9 @@
 
 ``` javascript
 function StraightSelectSort(arr) {
+    if(arr.length < 2) {
+        return arr;
+    }
     let index;
     for(let i = 0; i < arr.length - 1; i++) {
         index = i;
@@ -52,6 +55,9 @@ console.log(arr);
         <title>排序之直接选择排序</title>
         <script type="text/javascript">
             let StraightSelectSort = (arr, begin, end) => {
+                 if(arr.length < 2) {
+                    return arr;
+                }
                 let index;
                 for(let i = begin; i < end; i++) {
                     index = i;
@@ -87,6 +93,9 @@ console.log(arr);
 
 ``` javascript
 function StraightSelectSort(arr) {
+    if(arr.length < 2) {
+        return arr;
+    }
     let temp;
     for(let i = 0; i < arr.length - 1; i++) {
         for(let j = i + 1; j < arr.length; j++) {
@@ -119,6 +128,9 @@ console.log(arr);
         <title>选择排序之另外一种实现</title>
         <script type="text/javascript">
             function StraightSelectSort(arr) {
+                if(arr.length < 2) {
+                    return arr;
+                }
                 let temp;
                 for(let i = 0; i < arr.length - 1; i++) {
                     for(let j = i + 1; j < arr.length; j++) {
