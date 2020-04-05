@@ -1,30 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" />
+        <meta chartset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="referrer" content="origin" />
-        <title>排序之直接选择排序</title>
+        <meta property="og:description" content="排序算法之直接插入排序" />
+        <title>排序算法之直接插入排序</title>
         <script type="text/javascript">
-            let StraightSelectSort = (arr, begin, end) => {
-                let index;
-                for(let i = begin; i < end; i++) {
-                    index = i;
-                    for (let j = i + 1; j < end + 1; j++) {
-                        if(arr[index] > arr[j]) {
-                            index = j;
-                        }
+            let StraightInsertSort = (arr, begin, end)  => {
+                if(arr.length < 2) {
+                    return arr;
+                }
+                for(let i = begin + 1; i < end + 1; i++) {
+                    let temp = arr[i];
+                    let j = i - 1;
+                    while(j >= 0 && arr[j] > temp) {
+                        arr[j + 1] = arr[j];
+                        j--;
                     }
-                    if(index != i) {
-                        let temp = arr[i];
-                        arr[i] = arr[index];
-                        arr[index] = temp;
-                    }
+                    arr[j +1 ] = temp;
                 }
                 return arr;
             }
             var arr=[10, 7, 9, 4, 11, 22, 33, 4, 2, 0, 1000];
-            StraightSelectSort(arr, 0, 9);
+            StraightInsertSort(arr, 0 ,9);
             console.log(arr);
         </script>
     </head>
