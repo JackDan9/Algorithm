@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="referrer" content="origin" />
+        <title>JS算法之贪心算法</title>
+        <script type="text/javascript">
+            function MinCoinChange(coinsArr) {
+                debugger;
+                let coins = coinsArr;
+
+                let cache = {};
+                this.makeChange = function(amount) {
+                    let change = [];
+                    let total = 0;
+                    
+                    for(let i = coins.length; i >= 0; i--) {
+                        let coin = coins[i];
+                        while(total + coin <= amount) {
+                            change.push(coin);
+                            total += coin;
+                        }
+                    }
+
+                    return change;
+                }
+            }
+
+            let minCoinChange = new MinCoinChange([1, 4, 16, 64]);
+            console.log(minCoinChange.makeChange(36));
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
