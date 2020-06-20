@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>group anagrams</title>
+    </head>
+    <script type="text/javascript">
+        var groupAnagrams = function (strs) {
+            var strsLen = strs.length;
+            if (strsLen === 0) {
+                return [];
+            }
+            if (strsLen === 1) {
+                return [strs];
+            }
+
+            var result = new Object();
+            var resultArr = new Array();
+            for (var i = 0; i < strsLen; i++) {
+                var check = Array.from(strs[i]).sort().join("");
+                if (!result.hasOwnProperty(check)) {
+                    result[check] = [strs[i]]; 
+                } else {
+                    result[check].push(strs[i]);
+                }
+            }
+            for (var key in result) {
+                resultArr.push(result[key]);
+            }
+            return resultArr;
+        }
+
+
+        var strs = ["eat", "ate", "bat", "tea"];
+        
+        var resultDict = groupAnagrams(strs);
+        console.log(resultDict);
+    </script>
+</html>
