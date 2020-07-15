@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>subsets</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    var subsets = function (nums) {
+      var numsLen = nums.length;
+
+      if (numsLen == 0) {
+        return [];
+      }
+
+      if (numsLen == 1) {
+        return [nums, []];
+      }
+
+      var result = [];
+
+      var path = [];
+
+      depth_first_search(nums, numsLen, 0, path, result);
+
+      return result;
+    }
+
+    var depth_first_search = function (nums, len, depth, path, result) {
+      result.push(path.slice(0));
+      
+      while(depth < len) {
+        path.push(nums[depth]);
+
+        depth_first_search(nums, len, depth=depth + 1, path, result);
+
+        path.pop();
+      }
+    }
+
+    var a = [1, 2, 3];
+    console.log(subsets(a));
+
+  </script>
+</body>
+
+</html>
