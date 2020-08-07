@@ -6,9 +6,11 @@ Given n non-negative integers representing the histogram's bar height where the 
 
 ![histogram](./images/histogram.png)
 
+Above is a histogram where width of each bar is 1, given height = [2,1,5,6,2,3].
 
 ![histogram_area](./images/histogram_area.png)
 
+The largest rectangle is shown in the shaded area, which has area = 10 unit.
 
 Example:
 
