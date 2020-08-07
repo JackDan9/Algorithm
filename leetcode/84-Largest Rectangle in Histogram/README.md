@@ -12,7 +12,7 @@ Above is a histogram where width of each bar is 1, given height = [2,1,5,6,2,3].
 
 The largest rectangle is shown in the shaded area, which has area = 10 unit.
 
-Example:
+## Example:
 
 ``` javascript
 Input: [2,1,5,6,2,3]
