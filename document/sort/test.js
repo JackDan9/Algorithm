@@ -4,10 +4,6 @@
  */
 function quickSort(arr, begin, end) {
   let arrLen = arr.length;
-  
-  // if (arrLen < 2) {
-  //   return arr;
-  // }
 
   if (begin >= end) {
     return;

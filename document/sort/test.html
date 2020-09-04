@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta chartset="utf-8" />
+        <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="referrer" content="origin" />
         <meta property="og:description" content="JS排序算法之快速排序" />
@@ -9,7 +9,7 @@
         <meta http-equiv="Cache-Control" content="no-siteapp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>JS排序算法之快速排序</title>
-        <script type="text/javascript">
+        <!-- <script type="text/javascript">
             let BetterQuickSort = (array, begin, end) => {
                 if(array.length < 2) {
                     return array;
@@ -35,9 +35,37 @@
             debugger;
             BetterQuickSort(arr, 0, 9);
             console.log(arr);
-        </script>
+        </script> -->
     </head>
     <body>
-
+        <script type="text/javascript">
+            var reverse = function(x) {
+                debugger;
+                if(x < -Math.pow(2, 31)) {
+                    return 0;
+                } 
+                if(x > (Math.pow(2, 31) -1)) {
+                    return 0;
+                }
+                var xStr = x.toString();
+                var xArr = xStr.split('');
+                var flag = true;
+                if(xArr[0] === '-') {
+                    flag = false;
+                    xArr = xArr.splice(1);
+                }
+                
+                var xReverseStr = xArr.reverse().join('');
+                
+                if(!flag) {
+                    xReverseStr = '-' + xReverseStr;
+                    return parseInt(xReverseStr);
+                } else {
+                    return parseInt(xReverseStr);
+                }
+            };
+            var x = 1534236469;
+            reverse(x);
+        </script>
     </body>
 </html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <script type="text/javascript">
+      var removeDuplicates = function(nums) {
+        var len = nums.length - 1;
+        debugger;
+        while(len > 0) {
+            if(nums[len - 1] === nums[len]) {
+                // nums.pop(len);
+                nums.splice(len, 1);
+            }
+            
+            len = len - 1;
+        }
+        
+        return nums.length;
+      };
+
+      var nums = [0,0,1,1,1,2,2,3,3,4];
+      removeDuplicates(nums);
+
+    </script>
+  </body>
+</html>
