@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Test</title>
+        <script type="text/javascript">
+            var isSameTree = function(p, q) {
+                debugger;
+                var pArr = [];
+                var qArr = [];
+                // for(var i=0; i<p.length; i++) {
+                //     if(p[i] === null) {
+                //         p[i] = 0;
+                //     } 
+                //     pArr.push(p[i]);
+                // }
+                
+                for(var key in p) {
+                    if(p[key] === null) {
+                        p[key] = 0;
+                    }
+                    pArr.push(p[key]);
+                }
+                // for(var j=0; j<q.length; j++) {
+                //     if(q[j] === null) {
+                //         q[j] = 0;
+                //     }
+                //     qArr.push(q[j]);
+                // }
+                for(var key in q) {
+                    if(q[key] === null) {
+                        q[key] = 0;
+                    }
+                    qArr.push(q[key]);
+                }
+                
+                if(parseInt(pArr.join('')) !== parseInt(qArr.join(''))) {
+                    return false;
+                }
+                return true;
+            };
+            var p = {val: 1, left: [2], right: [1]};
+            var q = {val: 1, left: [1], right: [2]};
+            console.log(isSameTree(p, q));
+        </script>
+    </head>
+    <body></body>
+</html>
