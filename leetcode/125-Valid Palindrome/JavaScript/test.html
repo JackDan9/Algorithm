@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>ValidPalindrome</title>
+    <script type="text/javascript">
+      /**
+       * @param {string} s
+       * @return {boolean}
+       */
+      var isPalindrome = function (s) {
+        debugger;
+        let i = 0;
+        let j = s.length - 1;
+
+        while (i < j) {
+          while (i < j && !isChar(s[i])) {
+            i++;
+          }
+          while (i < j && !isChar(s[j])) {
+            j--;
+          }
+
+          while(i < j && s[i].toLowerCase() !== s[j].toLowerCase()) {
+            return false;
+          }
+          i++;
+          j--;
+        }
+
+        return true;
+      };
+
+      var isChar = function (c) {
+        if(parseInt(c.toLowerCase().charCodeAt(0)) >= 97 && parseInt(c.toLowerCase().charCodeAt(0)) <= 122 || (parseInt(c.toLowerCase().charCodeAt(0)) >= 48 && parseInt(c.toLowerCase().charCodeAt(0)) <= 57)) {
+          return true;
+        } else {
+          return false
+        }
+      };
+
+      let a = "0P";
+      // let b = "A man, a plan, a canal: Panama";
+      console.log(isPalindrome(a));
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>number of digit one</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var countNum = function (num, k) {
+            if (num < 0 || k < 1 || k > 9) {
+                return 0;
+            }
+            let current = num;
+            let low = num;
+            let temp = num;
+            let high = num;
+            let index = 1;
+            let count = 0;
+
+            while (high !== 0) {
+                high = Math.floor(num / parseInt(Math.pow(10, index)));
+                temp = Math.floor(num % parseInt(Math.pow(10, index)));
+                current = Math.floor(temp / parseInt(Math.pow(10, index - 1)));
+                low = Math.floor(temp % parseInt(Math.pow(10, index - 1)));
+
+                if (current === k) {
+                    count += high * parseInt(Math.pow(10, index - 1)) + low + 1;
+                } else if (current < k) {
+                    count += high * parseInt(Math.pow(10, index - 1));
+                } else {
+                    count += (high + 1) * parseInt(Math.pow(10, index - 1));
+                }
+                index++;
+            }
+            return count;
+
+        }
+
+        var countDigitOne = function (n) {
+            // let count = 0;
+            // for(let i = 1; i <= n; i++) {
+            //     count = count + countNum(i);
+            // }
+            let count = countNum(n, 1);
+            return count;
+        };
+        debugger;
+        let count = countDigitOne(12);
+        console.log(count);
+    </script>
+</body>
+
+</html>

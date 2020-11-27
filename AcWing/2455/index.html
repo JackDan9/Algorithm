@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <script type="text/javascript">
+    var countGoodTriplets = function (arr) {
+      let lenA = arr[0][0];
+      let lenB = arr[0][1];
+      let lenC = arr[0][2];
+      let d = arr[0][3];
+
+      let arrA = arr[1];
+      let arrB = arr[2];
+      let arrC = arr[3];
+
+      let count = 0;
+
+      for (let i = 0; i < lenA; i++) {
+        for (let j = 0; j < lenB; j++) {
+          for (let k = 0; k < lenC; k++) {
+            if (Math.abs(arrA[i] - arrB[j]) <= d && Math.abs(arrA[i] - arrC[k]) <= d && Math.abs(arrB[j] - arrC[k]) <= d) {
+              count = count + 1;
+            }
+          }
+        }
+      }
+      return count;
+    };
+
+    let arr = [
+      [5, 2, 3, 10],
+      [-8, 6, -9, -10, 10],
+      [-7, -7],
+      [-2, 6, 7]
+    ]
+    var count = countGoodTriplets(arr);
+    console.log(count);
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

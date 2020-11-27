@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Test</title>
+    <script type="text/javascript">
+        /**
+         * @param {number[]} a
+         * @param {number[]} b
+         * @return {number}
+         */
+        var smallestDifference = function (a, b) {
+            let lenA = a.length;
+            let lenB = b.length;
+
+            let i = 0;
+            let result = Infinity;
+            while (i < lenA) {
+                let j = 0;
+                while (j < lenB) {
+                    result = Math.min(result, Math.abs(a[i] - b[j]));
+                    j++;
+                }
+                i++
+            }
+            return result;
+        };
+
+        var a = [1, 2, 3, 4];
+        var b = [3, 1, 2, 3, 1, 2, 12];
+        var result = smallestDifference(a, b);
+        console.log(result);
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
