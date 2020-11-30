@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>shortest-unsorted-continuous-subarray</title>
+  <script type="text/javascript">
+    /**
+     * @param {number[]} nums
+     * @return {number}
+     */
+    var findUnsortedSubarray = function (nums) {
+      debugger;
+      if (nums.length === 0) {
+        return 0;
+      }
+      let tempLeft = nums[0];
+      let tempRight = nums[nums.length - 1];
+
+      let left = 0;
+      let right = 0;
+
+      for (let i = 1; i < nums.length; i++) {
+        if (nums[i] < tempLeft) {
+          right = i;
+        }
+        tempLeft = Math.max(tempLeft, nums[i]);
+      }
+
+      for (let j = nums.length - 2; j >= 0; j--) {
+        if (nums[j] > tempRight) {
+          left = j;
+        }
+        tempRight = Math.min(tempRight, nums[j]);
+      }
+
+      if (left === right) {
+        return 0;
+      }
+
+      return right - left + 1;
+    };
+
+    // let nums = [2, 6, 4, 8, 10, 9, 15];
+    let nums = [1, 3, 2, 1, 6, 6, 4, 6, 5];
+    let res = findUnsortedSubarray(nums);
+    console.log(res);
+  </script>
+</head>
+
+</html>
