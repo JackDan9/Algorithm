@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>image smoother</title>
-    <script type="text/javascript">
-      
-    </script>
-  </head>
+
+<head>
+  <meta charset="utf-8" />
+  <title>image smoother</title>
+  <script type="text/javascript">
+    /**
+     * @param {number[][]} M
+     * @return {number[][]}
+     */
+    var imageSmoother = function (M) {
+      if(M.length === 0 || M[0].length === 0) {
+        return 0;
+      }
+
+      let resultArr = new Array();
+
+      for(let i = 0; i < M.length; i++) {
+        resultArr[i] = new Array();
+        for(let j = 0; j < M[0].length; j++) {
+          let result = 0;
+          let count = 0;
+          
+          
+        }
+      }
+    }
+  </script>
+</head>
+
 </html>
