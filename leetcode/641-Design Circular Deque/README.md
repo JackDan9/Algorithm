@@ -35,3 +35,4 @@ circularDeque.getFront();				// 返回 4
     操作次数的范围为 [1, 1000]
     请不要使用内置的双端队列库。
 
+> Thinking in JackDan

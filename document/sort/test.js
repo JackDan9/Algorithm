@@ -1,68 +1,34 @@
-/**
- * Quick Sort
- * Author: JackDan
- */
-function quickSort(arr, begin, end) {
-  let arrLen = arr.length;
-
-  if (begin >= end) {
-    return;
-  }
-
-  let left = begin;
-  let right = end;
-
-  let temp = arr[begin];
-
-  while (left < right) {
-    while(left < right && arr[right] >= temp) {
-      right--;
+// 判断一个字符串是否是ip地址
+// 192.168.1.1
+// 172.16.7.84
+// 99.16.1.1
+// 1.1.1.1.1
+// aaa.aaa.aaa.aa
+function isIp(str1) {
+  let strArr = str1.split('.');
+  let len = strArr.length;
+  if(len !== 4) {
+    return false;
+  } else {
+    for(let i = 0; i < len; i++) {
+      if(strArr[i].indexof())
+      if(parseInt(strArr[i]) <= 0 || parseInt(strArr[i]) > 255) {
+        return false
+      }
     }
-
-    while(left < right && arr[left] <= temp) {
-      left++;
-    }
-
-    [arr[left], arr[right]] = [arr[right], arr[left]];
+    return true; 
   }
-
-  [arr[begin], arr[left]] = [arr[left], arr[begin]];
-
-  quickSort(arr, begin, left - 1);
-  quickSort(arr, left + 1, end);
 }
 
-var arr=[10, 7, 9, 4, 11, 22, 33, 4, 2, 0, 1000];
-quickSort(arr, 0, 10);
-console.log(arr);
+let ip = '001.111.111.1'; // false
+let ip1 = '0.1.1.1'; // false
+let ip2 = '255.255.255.255'; // true
+let ip3 = 'aaa.1.1.1'; // false
+let ip4 = '1.1'; // false
+let ip5 = ''
 
-// let BetterQuickSort = (arr, begin, end) => {
-//   // 递归出口
-//   if(begin >= end) {
-//       return;
-//   }
-//   let left = begin; // 左指针
-//   let right = end; // 右指针
-//   let temp = arr[begin]; // 基准数, 这里取数组第一个数
-//   while(left < right) {
-//       // 右指针从右向左扫描，碰到第一个小于基准数的时候停住
-//       while(left < right && arr[right] >= temp) {
-//           right--;
-//       }
-//       // 左指针从左向右扫描, 碰到第一个大于基准数的时候停住
-//       while(left < right && arr[left] <= temp) {
-//           left++;
-//       }
-//       // 交换左右指针所停位置的数
-//       [arr[left], arr[right]] = [arr[right], arr[left]];
-//   }
-//   // 最后交换基准数与指针相遇位置的数
-//   [arr[begin], arr[left]] = [arr[left], arr[begin]];
-//   // 递归处理左右数组
-//   BetterQuickSort(arr, begin, left - 1);
-//   BetterQuickSort(arr, left + 1, end);
-// }
-
-// var arr=[10, 7, 9, 4, 11, 22, 33, 4, 2, 0, 1000];
-// BetterQuickSort(arr, 0, 9);
-// console.log(arr);
+console.log(isIp(ip)); 
+console.log(isIp(ip1));
+console.log(isIp(ip2));
+console.log(isIp(ip3));
+console.log(isIp(ip4));
