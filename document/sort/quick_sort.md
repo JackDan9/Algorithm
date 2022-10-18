@@ -260,7 +260,6 @@ console.log(arr);
                 BetterQuickSort(arr, left + 1, end);
             }
             var arr=[10, 7, 9, 4, 11, 22, 33, 4, 2, 0, 1000];
-            debugger;
             BetterQuickSort(arr, 0, 9);
             console.log(arr);
         </script>
