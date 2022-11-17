@@ -20,15 +20,15 @@ var climbStairs = function(n) {
 
   var resultStep = 0;
 
-  if(n === 0) {
+  if (n === 0) {
     return firstStep;
   }
-  if(n === 1) {
+  if (n === 1) {
     return secondStep;
   }
 
   var index = 2;
-  while(index <= n) {
+  while (index <= n) {
     resultStep = firstStep + secondStep;
     firstStep = secondStep;
     secondStep = resultStep;
@@ -37,6 +37,7 @@ var climbStairs = function(n) {
 
   return resultStep;
 }
+
 var a = climbStairs(45);
 
 console.log(a);

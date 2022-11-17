@@ -22,11 +22,7 @@
 var nthSuperUglyNumber = function(n, primes) {
   let len = primes.length;
   
-  if (!primes || len < 1) {
-    return 0;
-  }
-
-  if (n < 1) {
+  if (!primes || len < 1 || n < 1) {
     return 0;
   }
 
@@ -34,12 +30,13 @@ var nthSuperUglyNumber = function(n, primes) {
   res[0] = 1;
   let next = new Array(len).fill(0);
   let index = 1;
-  // for (let index = 1; index < n; index++) {
+  
   while (index < n) {
     let nextNum = Number.MAX_SAFE_INTEGER;
+
     for (let j = 0; j < len; j++) {
       let temp = res[next[j]] * primes[j];
-      console.log(temp);
+
       if (temp < nextNum) {
         nextNum = temp;
       }
@@ -54,7 +51,7 @@ var nthSuperUglyNumber = function(n, primes) {
     }
     index++;
   }
-  console.log(res);
+
   return res[n - 1];
 };
 
