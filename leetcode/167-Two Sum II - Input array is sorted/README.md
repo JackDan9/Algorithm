@@ -1,34 +1,38 @@
-# 167. Two Sum II - Input array is sorted
-## Easy
+# 167. 两数之和 II - 输入有序数组
 
-Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.
+- 给你一个下标从 `1` 开始的整数数组` numbers `，该数组已按 `非递减顺序排列`  ，请你从数组中找出满足相加之和等于目标数 `target` 的两个数。如果设这两个数分别是 `numbers[index1]` 和 `numbers[index2]` ，则` 1 <= index1 < index2 <= numbers.length `。
 
-The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2.
+- 以长度为` 2 `的整数数组` [index1, index2] `的形式返回这两个整数的下标` index1 `和` index2`。
 
-Note:
+- 你可以假设每个输入` 只对应唯一的答案 `，而且你` 不可以 `重复使用相同的元素。
 
-Your returned answers (both index1 and index2) are not zero-based.
-You may assume that each input would have exactly one solution and you may not use the same element twice.
+- 你所设计的解决方案必须只使用`常量级的额外空间`。
 
-Example 1:
-
-Input: `numbers = [2,7,11,15], target = 9`
-Output: `[1,2]`
-Explanation: The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2.
-Example 2:
-
-Input: `numbers = [2,3,4], target = 6`
-Output: `[1,3]`
-Example 3:
-
-Input: `numbers = [-1,0], target = -1`
-Output: `[1,2]`
  
+示例 1：
+```js
+输入：numbers = [2,7,11,15], target = 9
+输出：[1,2]
+解释：2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。返回 [1, 2] 。
+```
+示例 2：
+```js
+输入：numbers = [2,3,4], target = 6
+输出：[1,3]
+解释：2 与 4 之和等于目标数 6 。因此 index1 = 1, index2 = 3 。返回 [1, 3] 。
+```
+示例 3：
+```js
+输入：numbers = [-1,0], target = -1
+输出：[1,2]
+解释：-1 与 0 之和等于目标数 -1 。因此 index1 = 1, index2 = 2 。返回 [1, 2] 。
+```
 
-Constraints:
-```javascript
-2 <= nums.length <= 3 * 104
--1000 <= nums[i] <= 1000
-nums is sorted in increasing order.
+提示：
+```js
+2 <= numbers.length <= 3 * 104
+-1000 <= numbers[i] <= 1000
+numbers 按 非递减顺序 排列
 -1000 <= target <= 1000
+仅存在一个有效答案
 ```
