@@ -18,3 +18,6 @@ class Solution:
             else:
                 left = mid + 1
         return left
+    
+    def guess(self, n: int) -> int:
+        
